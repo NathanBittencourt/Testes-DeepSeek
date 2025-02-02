@@ -62,62 +62,134 @@
     </header>
 
     <main>
+        <!-- Conversor de português para binário -->
         <section>
-            <h2>Conversor de português para binário</h2>
+            <h2>Português para Binário</h2>
             <div class="converter">
                 <input type="text" id="textToBinary" placeholder="Digite em português">
                 <input type="text" id="binaryOutput" readonly placeholder="Binário">
             </div>
         </section>
 
+        <!-- Conversor de binário para português -->
         <section>
-            <h2>Conversor de binário para português</h2>
+            <h2>Binário para Português</h2>
             <div class="converter">
                 <input type="text" id="binaryToText" placeholder="Digite em binário">
                 <input type="text" id="textOutput" readonly placeholder="Português">
             </div>
         </section>
 
+        <!-- Conversor de binário para decimal -->
         <section>
-            <h2>Conversor de binário para decimal</h2>
+            <h2>Binário para Decimal</h2>
             <div class="converter">
                 <input type="text" id="binaryToDecimal" placeholder="Digite em binário">
                 <input type="text" id="decimalOutput" readonly placeholder="Decimal">
             </div>
         </section>
 
+        <!-- Conversor de decimal para binário -->
         <section>
-            <h2>Conversor de decimal para binário</h2>
+            <h2>Decimal para Binário</h2>
             <div class="converter">
                 <input type="text" id="decimalToBinary" placeholder="Digite em decimal">
                 <input type="text" id="binaryFromDecimal" readonly placeholder="Binário">
             </div>
         </section>
+
+        <!-- Conversor de hexadecimal para binário -->
+        <section>
+            <h2>Hexadecimal para Binário</h2>
+            <div class="converter">
+                <input type="text" id="hexToBinary" placeholder="Digite em hexadecimal">
+                <input type="text" id="binaryFromHex" readonly placeholder="Binário">
+            </div>
+        </section>
+
+        <!-- Conversor de binário para hexadecimal -->
+        <section>
+            <h2>Binário para Hexadecimal</h2>
+            <div class="converter">
+                <input type="text" id="binaryToHex" placeholder="Digite em binário">
+                <input type="text" id="hexFromBinary" readonly placeholder="Hexadecimal">
+            </div>
+        </section>
+
+        <!-- Conversor de decimal para hexadecimal -->
+        <section>
+            <h2>Decimal para Hexadecimal</h2>
+            <div class="converter">
+                <input type="text" id="decimalToHex" placeholder="Digite em decimal">
+                <input type="text" id="hexFromDecimal" readonly placeholder="Hexadecimal">
+            </div>
+        </section>
+
+        <!-- Conversor de hexadecimal para decimal -->
+        <section>
+            <h2>Hexadecimal para Decimal</h2>
+            <div class="converter">
+                <input type="text" id="hexToDecimal" placeholder="Digite em hexadecimal">
+                <input type="text" id="decimalFromHex" readonly placeholder="Decimal">
+            </div>
+        </section>
     </main>
 
     <script>
+        // Conversor de português para binário
         document.getElementById('textToBinary').addEventListener('input', function() {
             const text = this.value;
             const binary = text.split('').map(char => char.charCodeAt(0).toString(2)).join(' ');
             document.getElementById('binaryOutput').value = binary;
         });
 
+        // Conversor de binário para português
         document.getElementById('binaryToText').addEventListener('input', function() {
             const binary = this.value;
             const text = binary.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
             document.getElementById('textOutput').value = text;
         });
 
+        // Conversor de binário para decimal
         document.getElementById('binaryToDecimal').addEventListener('input', function() {
             const binary = this.value;
             const decimal = parseInt(binary, 2);
             document.getElementById('decimalOutput').value = isNaN(decimal) ? '' : decimal;
         });
 
+        // Conversor de decimal para binário
         document.getElementById('decimalToBinary').addEventListener('input', function() {
             const decimal = this.value;
             const binary = parseInt(decimal).toString(2);
             document.getElementById('binaryFromDecimal').value = isNaN(binary) ? '' : binary;
+        });
+
+        // Conversor de hexadecimal para binário
+        document.getElementById('hexToBinary').addEventListener('input', function() {
+            const hex = this.value;
+            const binary = parseInt(hex, 16).toString(2);
+            document.getElementById('binaryFromHex').value = isNaN(binary) ? '' : binary;
+        });
+
+        // Conversor de binário para hexadecimal
+        document.getElementById('binaryToHex').addEventListener('input', function() {
+            const binary = this.value;
+            const hex = parseInt(binary, 2).toString(16).toUpperCase();
+            document.getElementById('hexFromBinary').value = isNaN(hex) ? '' : hex;
+        });
+
+        // Conversor de decimal para hexadecimal
+        document.getElementById('decimalToHex').addEventListener('input', function() {
+            const decimal = this.value;
+            const hex = parseInt(decimal).toString(16).toUpperCase();
+            document.getElementById('hexFromDecimal').value = isNaN(hex) ? '' : hex;
+        });
+
+        // Conversor de hexadecimal para decimal
+        document.getElementById('hexToDecimal').addEventListener('input', function() {
+            const hex = this.value;
+            const decimal = parseInt(hex, 16);
+            document.getElementById('decimalFromHex').value = isNaN(decimal) ? '' : decimal;
         });
     </script>
 </body>
